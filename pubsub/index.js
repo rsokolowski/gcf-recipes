@@ -15,10 +15,8 @@ module.exports = {
           'your request';
     }
     if (!message) {
-      throw 
-          'Message not provided. Make sure you have a \'message\' property ' +
+      throw 'Message not provided. Make sure you have a \'message\' property ' +
           'in your request');
-      return;
     }
 
     console.log('Publishing message to topic ' + topicName);
