@@ -11,8 +11,7 @@ module.exports = {
     var message = data['message'];
 
     if (!topicName) {
-      th
-          'Topic not provided. Make sure you have a \'topic\' property in ' +
+      throw 'Topic not provided. Make sure you have a \'topic\' property in ' +
           'your request');
       return;
     }
