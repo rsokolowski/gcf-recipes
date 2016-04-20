@@ -1,35 +1,29 @@
-var gcloud = require('gcloud');
+// Create a pubsub client.
+var pubsub = require('gcloud').pubsub({
+  // We're using the API from the same project as the Cloud Function.
+  projectId: process.env.GCP_PROJECT,
+});
 
 module.exports = {
 
   /**
    * Publishes a message to a Cloud Pub/Sub Topic.
    */
-  publish: function(context, data) {
+  publish: function(data) {
 
     var topicName = data['topic'];
     var message = data['message'];
 
     if (!topicName) {
-      context.failure(
-          'Topic not provided. Make sure you have a \'topic\' property in ' +
-          'your request');
-      return;
+      throw 'Topic not provided. Make sure you have a \'topic\' property in ' +
+          'your request';
     }
     if (!message) {
-      context.failure(
-          'Message not provided. Make sure you have a \'message\' property ' +
-          'in your request');
-      return;
+      throw 'Message not provided. Make sure you have a \'message\' property ' +
+          'in your request';
     }
 
     console.log('Publishing message to topic ' + topicName);
-
-    // Create a pubsub client.
-    var pubsub = gcloud.pubsub({
-      // We're using the API from the same project as the Cloud Function.
-      projectId: process.env.GCP_PROJECT,
-    });
 
     // The Pub/Sub topic must already exist.
     var topic = pubsub.topic(topicName);
@@ -54,11 +48,8 @@ module.exports = {
   /**
    * Triggered from a message on a Pub/Sub topic.
    */
-  subscribe: function(context, data) {
+  subscribe: function(data) {
     // We're just going to log the message to prove that it worked!
     console.log(data['message']);
-
-    // Don't forget to call success!
-    context.success();
   },
 };
