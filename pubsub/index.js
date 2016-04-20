@@ -1,7 +1,7 @@
 var gcloud = require('gcloud');
 
 // Create a pubsub client.
-var pubsub = gcloud.pubsub({
+var pubsub = require('gcloud').pubsub({
   // We're using the API from the same project as the Cloud Function.
   projectId: process.env.GCP_PROJECT,
 });
