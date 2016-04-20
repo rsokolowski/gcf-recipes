@@ -12,8 +12,7 @@ module.exports = {
 
     if (!topicName) {
       throw 'Topic not provided. Make sure you have a \'topic\' property in ' +
-          'your request');
-      return;
+          'your request';
     }
     if (!message) {
       context.failure(
