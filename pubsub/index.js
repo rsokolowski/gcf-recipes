@@ -11,7 +11,7 @@ module.exports = {
     var message = data['message'];
 
     if (!topicName) {
-      context.failure(
+      th
           'Topic not provided. Make sure you have a \'topic\' property in ' +
           'your request');
       return;
