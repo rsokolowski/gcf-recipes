@@ -48,7 +48,7 @@ module.exports = {
   /**
    * Triggered from a message on a Pub/Sub topic.
    */
-  subscribe: function(context, data) {
+  subscribe: function(, data) {
     // We're just going to log the message to prove that it worked!
     console.log(data['message']);
 
