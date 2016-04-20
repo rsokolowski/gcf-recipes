@@ -15,7 +15,7 @@ module.exports = {
           'your request';
     }
     if (!message) {
-      context.failure(
+      throw 
           'Message not provided. Make sure you have a \'message\' property ' +
           'in your request');
       return;
